@@ -1,7 +1,7 @@
 FROM node:latest
 
-WORKDIR /app
+WORKDIR /app/desafio
 RUN apt update
 COPY . /app
-EXPOSE 3001
-ENTRYPOINT ["tail", "-f", "/dev/null"]
+EXPOSE 3000
+ENTRYPOINT ["yarn", "start"]
