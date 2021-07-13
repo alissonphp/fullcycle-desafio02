@@ -10,8 +10,12 @@ function App() {
     fetch("http://localhost:3000/routes")
       .then(
         (result) => {
-          //setRoutes(result);
-          console.log(result.body)
+          result.json()
+            .then(
+              (res) => {
+                setRoutes(res)
+              }
+            )
         },
         (error) => {
           console.error("routes cannot be loaded", error)
@@ -29,7 +33,7 @@ function App() {
         <ul>
           {routes?.map(route => (
             <li key={route.title}>
-              {route.title} - start: {route.startPosition} ; end: {route.endPosition}
+              {route.title} - start: ({route.startPosition.lati}, {route.startPosition.long}) ; end: ({route.endPosition.lati}, {route.endPosition.long})
             </li>
           ))}
         </ul>
